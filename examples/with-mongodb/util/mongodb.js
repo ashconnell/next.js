@@ -20,10 +20,11 @@ if (!dbName) {
 
 export async function connectToDatabase() {
   if (cachedClient && cachedDb) {
+    console.log('using cached')
     return { client: cachedClient, db: cachedDb }
   }
 
-  console.log('connectToDatabase() called')
+  console.log('creating connection')
 
   const client = await MongoClient.connect(uri, {
     useNewUrlParser: true,
